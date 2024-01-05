@@ -50,13 +50,11 @@ abstract contract ERC4626Fees is ERC4626 {
     }
 
     /// @dev Send exit fee to {_exitFeeRecipient}. See {IERC4626-_deposit}.
-    function _withdraw(
-        address caller,
-        address receiver,
-        address owner,
-        uint256 assets,
-        uint256 shares
-    ) internal virtual override {
+    function _withdraw(address caller, address receiver, address owner, uint256 assets, uint256 shares)
+        internal
+        virtual
+        override
+    {
         uint256 fee = _feeOnRaw(assets, _exitFeeBasisPoints());
         address recipient = _exitFeeRecipient();
 
@@ -101,24 +99,33 @@ abstract contract ERC4626Fees is ERC4626 {
 }
 
 contract VaultWithFee is ERC4626Fees {
-
     using PercentageMath for uint256;
 
     address public owner;
     uint256 public entryFeeBasisPoints;
     address public immutable factory;
 
-    constructor(IERC20Metadata _asset, uint256 _basisPoints, address _treasury,address _factory) ERC4626(_asset) ERC20("Vault Token", "VLT") {
+    constructor(IERC20Metadata _asset, uint256 _basisPoints, address _treasury, address _factory)
+        ERC4626(_asset)
+        ERC20("Vault Token", "VLT")
+    {
         owner = _treasury;
         entryFeeBasisPoints = _basisPoints;
         factory = _factory;
-    } 
+    }
 
     modifier AfterFlashLoan(address receiver, uint256 amount, uint256 fee) {
         _;
         uint256 x = amount.percentMul(fee);
         IERC20(asset()).transferFrom(receiver, address(this), amount + x);
         // if (IERC20(asset()).balanceOf())
+    }
+
+    function flashloan(address receiver, uint256 amount, uint256 fee) external AfterFlashLoan(receiver, amount, fee) {
+        if (amount >= IERC20(asset()).balanceOf(address(this))) {
+            revert();
+        }
+        IERC20(asset()).transfer(receiver, amount);
     }
 
     // === Fee configuration ===
@@ -137,14 +144,4 @@ contract VaultWithFee is ERC4626Fees {
     function _exitFeeBasisPoints() internal view virtual override returns (uint256) {
         return entryFeeBasisPoints; // replace with e.g. 100 for 1%
     }
-
-    function flashloan(address receiver, uint256 amount, uint256 fee) external 
-    AfterFlashLoan(receiver,amount,fee){
-        if (amount >= IERC20(asset()).balanceOf(address(this))) {
-            revert();
-        }
-        IERC20(asset()).transfer(receiver,amount);
-    }
-    
-
 }
