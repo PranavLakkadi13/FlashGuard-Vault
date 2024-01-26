@@ -1,0 +1,5 @@
+cache
+artifacts
+.env
+node_modules
+.vscode
