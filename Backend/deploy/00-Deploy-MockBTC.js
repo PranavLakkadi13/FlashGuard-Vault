@@ -6,19 +6,17 @@ module.exports = async ({getNamedAccounts, deployments}) => {
     const chainid = network.config.chainId;
     log("deploy to the chainId " + chainid);
 
-    const MockBTC = await deployments.get("MockBTC");
+    args = [];
 
-    args = [MockBTC.address];
-
-    const Vault = await deploy("Vault", {
+    const MockBTC = await deploy("MockBTC", {
         args: args,
         from: deployer,
         log: true,
     });
 
-    log(`The address of the deployed contract ${Vault.address}`);
+    log(`The address of the deployed contract ${MockBTC.address}`);
     log("------------------------------------------------------------------------");
 
 }
 
-module.exports.tags = ["all", "Vault"];
+module.exports.tags = ["all", "MockBTC"];

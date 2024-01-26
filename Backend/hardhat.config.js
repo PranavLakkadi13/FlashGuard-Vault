@@ -16,6 +16,7 @@ const Etherscan_API_KEY = process.env.Etherscan_API_KEY;
 const Coinmarketcap_API_KEY = process.env.Coinmarketcap_API_KEY;
 const RPC_URL_Alchemy_MAINNET = process.env.RPC_URL_Alchemy_MAINNET;
 const ZAMAMNEMONIC = process.env.ZAMAMNEMONIC;
+const RPC_URL_ALchemy_OPTIMISM = process.env.RPC_URL_ALchemy_OPTIMISM;
 
 const Private_Key_G = process.env.Private_Key_G;
 const RPC_URL_G = process.env.RPC_URL_G;
@@ -68,6 +69,12 @@ module.exports = {
       accounts: [Private_Key],
       chainId: 8009,
       url: "https://devnet.zama.ai",
+    },
+    optimism : {
+      url: RPC_URL_ALchemy_OPTIMISM,
+      accounts: [Private_Key],
+      chainId: 11155420,
+      blockConfirmations: 4,
     }
   },
   solidity: {
@@ -75,7 +82,7 @@ module.exports = {
       { version: "0.4.19" },
       { version: "0.8.20" },
       { version: "0.6.6" },
-      { version: "0.8.19"}
+      { version: "0.8.19" },
     ],
   },
   namedAccounts: {
