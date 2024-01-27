@@ -41,4 +41,11 @@ contract FlashLoanVault is FlashLoanSimpleReceiverBase {
         IERC20 token = IERC20(_tokenAddress);
         token.transfer(msg.sender),token.balanceOf(address(this));
     }
+
+    modifier onlyOwner() {
+        require(msg.sender == owner);
+        _;
+    }
+
+    receiver() external payable{};
 }
