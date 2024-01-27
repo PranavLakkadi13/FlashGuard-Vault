@@ -10,6 +10,7 @@ import {IERC20} from "@openzeppelin/contracts/interfaces/IERC20.sol";
 /// @dev ERC4626 vault with entry/exit fees expressed in https://en.wikipedia.org/wiki/Basis_point[basis point (bp)].
 abstract contract ERC4626Fees is ERC4626 {
     using Math for uint256;
+    using PercentageMath for uint256;
 
     uint256 private constant _BASIS_POINT_SCALE = 1e4;
     uint256 public tokenholders;
@@ -65,7 +66,9 @@ abstract contract ERC4626Fees is ERC4626 {
         uint256 fee = _feeOnRaw(assets, _exitFeeBasisPoints());
         address recipient = _exitFeeRecipient();
 
-        super._withdraw(caller, receiver, owner, assets, shares);
+        uint256 feeAsset = assets.percentMul(1e2);
+        uint256 updatedAssests = assets + feeAsset;
+        super._withdraw(caller, receiver, owner, updatedAssests, shares);
 
         if (fee > 0 && recipient != address(this)) {
             SafeERC20.safeTransfer(IERC20(asset()), recipient, fee);
@@ -137,9 +140,9 @@ contract VaultWithFee is ERC4626Fees {
         }
         uint256 x = IERC20(asset()).balanceOf(address(this));
         IERC20(asset()).transfer(receiver, amount);
-        
+
         IFlashLoanSimpleReceiver(receiver).executeOperation(asset(), amount, fee, address(this));
-        
+
         uint256 y = amount.percentMul(fee);
         IERC20(asset()).transferFrom(receiver, address(this), amount + y);
         if (IERC20(asset()).balanceOf(address(this)) <= x) {
