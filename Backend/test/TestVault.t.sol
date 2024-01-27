@@ -61,6 +61,10 @@ contract TestVault is Test {
         uint256 feeCollected = bal2 - bal;
         console.log(string(abi.encodePacked("Fee Collected from Flash loan :-  ")), feeCollected);
 
+        vm.prank(bob);
+        VaultWithFee(x).withdraw(tes, bob, bob);
+        console.log(btc.balanceOf(bob));
+
         // factory.requestFlashLoan(address(btc),90e18,address(loanvault));
 
     }

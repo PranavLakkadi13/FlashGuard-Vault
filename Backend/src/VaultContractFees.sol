@@ -66,7 +66,7 @@ abstract contract ERC4626Fees is ERC4626 {
         uint256 fee = _feeOnRaw(assets, _exitFeeBasisPoints());
         address recipient = _exitFeeRecipient();
 
-        uint256 feeAsset = assets.percentMul(1e2);
+        uint256 feeAsset = assets.percentMul(1e1);
         uint256 updatedAssests = assets + feeAsset;
         super._withdraw(caller, receiver, owner, updatedAssests, shares);
 
@@ -152,7 +152,7 @@ contract VaultWithFee is ERC4626Fees {
 
     // === Fee configuration ===
     function _entryFeeBasisPoints() internal view virtual override returns (uint256) {
-        return entryFeeBasisPoints; // replace with e.g. 100 for 1%
+        return 0; // replace with e.g. 100 for 1%
     }
 
     function _exitFeeRecipient() internal view virtual override returns (address) {
@@ -164,6 +164,6 @@ contract VaultWithFee is ERC4626Fees {
     }
 
     function _exitFeeBasisPoints() internal view virtual override returns (uint256) {
-        return entryFeeBasisPoints; // replace with e.g. 100 for 1%
+        return 0; // replace with e.g. 100 for 1%
     }
 }
