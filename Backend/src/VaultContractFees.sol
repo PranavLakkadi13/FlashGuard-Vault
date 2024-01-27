@@ -3,6 +3,7 @@
 pragma solidity ^0.8.18;
 
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC4626.sol";
+import "./Percentage.sol";
 
 /// @dev ERC4626 vault with entry/exit fees expressed in https://en.wikipedia.org/wiki/Basis_point[basis point (bp)].
 abstract contract ERC4626Fees is ERC4626 {
@@ -101,14 +102,24 @@ abstract contract ERC4626Fees is ERC4626 {
 
 contract VaultWithFee is ERC4626Fees {
 
+    using PercentageMath for uint256;
+
     address public owner;
     uint256 public entryFeeBasisPoints;
+    address public immutable factory;
 
-    constructor(IERC20Metadata _asset, uint256 _basisPoints, address _treasury) ERC4626(_asset) ERC20("Vault Token", "VLT") {
+    constructor(IERC20Metadata _asset, uint256 _basisPoints, address _treasury,address _factory) ERC4626(_asset) ERC20("Vault Token", "VLT") {
         owner = _treasury;
         entryFeeBasisPoints = _basisPoints;
-        // owner 
+        factory = _factory;
     } 
+
+    modifier AfterFlashLoan(address receiver, uint256 amount, uint256 fee) {
+        _;
+        uint256 x = amount.percentMul(fee);
+        IERC20(asset()).transferFrom(receiver, address(this), amount + x);
+        // if (IERC20(asset()).balanceOf())
+    }
 
     // === Fee configuration ===
     function _entryFeeBasisPoints() internal view virtual override returns (uint256) {
@@ -127,6 +138,13 @@ contract VaultWithFee is ERC4626Fees {
         return entryFeeBasisPoints; // replace with e.g. 100 for 1%
     }
 
+    function flashloan(address receiver, uint256 amount, uint256 fee) external 
+    AfterFlashLoan(receiver,amount,fee){
+        if (amount >= IERC20(asset()).balanceOf(address(this))) {
+            revert();
+        }
+        IERC20(asset()).transfer(receiver,amount);
+    }
     
 
 }
