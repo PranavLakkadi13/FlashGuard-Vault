@@ -3,7 +3,7 @@ pragma solidity ^0.8.19;
 
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-contract Vault {
+contract VaultContract {
     IERC20 public immutable token;
 
     uint256 public totalSupply; //We need to track the total shares
