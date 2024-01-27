@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: SEE LICENSE IN LICENSE
 pragma solidity ^0.8.19;
 
-import {Test} from "forge-std/Test.sol";
-import {console} from "forge-std/console.sol";
+import {Test, console} from "forge-std/Test.sol";
 import {Factory} from "../src/Factory.sol";
 import {MockBTC} from "../src/Asset.sol";
 import {VaultWithFee} from "../src/VaultContractFees.sol";
@@ -33,13 +32,13 @@ contract TestVault is Test {
     }
 
     function testVault() public {
-        address x = factory.createVault(address(btc), 100,address(treasury));
+        address x = factory.createVault(address(btc), 100, address(treasury));
         assertEq(address(btc), VaultWithFee(x).asset());
     }
 
     function testVaultDeposit() public {
         vm.startPrank(bob);
-        address x = factory.createVault(address(btc), 100,address(treasury));
+        address x = factory.createVault(address(btc), 100, address(treasury));
         assertEq(address(btc), VaultWithFee(x).asset());
         btc.approve(x, 100e18);
         btc.transfer(address(loanvault), 100e18);
@@ -47,15 +46,21 @@ contract TestVault is Test {
         vm.stopPrank();
 
         uint256 bal = btc.balanceOf(x);
-        console.log(bal);
+        // console.log("Balance of Vault" + bal);
+        console.log(string(abi.encodePacked("Balance of Vault :-               ")), bal);
         btc.balanceOf(address(treasury));
 
         uint256 tes = VaultWithFee(x).balanceOf(bob);
-        console.log(tes);
-        loanvault.requestFlashLoan(address(btc),98e18);
+        // console.log("Number of Shares minted" + tes);
+        console.log(string(abi.encodePacked("Number of Shares minted :-        ")), tes);
+        loanvault.requestFlashLoan(address(btc), 98e18);
 
         uint256 bal2 = btc.balanceOf(x);
-        console.log(bal2);
+        console.log(string(abi.encodePacked("Balance after flash loan :-       ")), bal2);
+
+        uint256 feeCollected = bal2 - bal;
+        console.log(string(abi.encodePacked("Fee Collected from Flash loan :-  ")), feeCollected);
+
         // factory.requestFlashLoan(address(btc),90e18,address(loanvault));
     }
 }
