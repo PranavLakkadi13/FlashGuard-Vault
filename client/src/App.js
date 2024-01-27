@@ -1,23 +1,21 @@
-import logo from './logo.svg';
+// src/App.js
+
+import React from 'react';
 import './App.css';
+import Navbar from './Navbar';
 
 function App() {
+  const connectWallet = () => {
+    // Add code to connect the wallet here
+    alert('Wallet connected!');
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar connectWallet={connectWallet} />
+      <div className="content">
+        <h1>Welcome to My Wallet Website</h1>
+      </div>
     </div>
   );
 }
