@@ -50,11 +50,12 @@ contract TestVault is Test {
         console.log(bal);
         btc.balanceOf(address(treasury));
 
-        VaultWithFee(x).balanceOf(bob);
-
+        uint256 tes = VaultWithFee(x).balanceOf(bob);
+        console.log(tes);
         loanvault.requestFlashLoan(address(btc),98e18);
 
-        
+        uint256 bal2 = btc.balanceOf(x);
+        console.log(bal2);
         // factory.requestFlashLoan(address(btc),90e18,address(loanvault));
     }
 }
