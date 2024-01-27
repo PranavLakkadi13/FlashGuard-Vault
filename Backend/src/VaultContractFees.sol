@@ -4,12 +4,15 @@ pragma solidity ^0.8.18;
 
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC4626.sol";
 import "./Percentage.sol";
+import "./IFlashLoanSimpleReceiver.sol";
+import {IERC20} from "@openzeppelin/contracts/interfaces/IERC20.sol";
 
 /// @dev ERC4626 vault with entry/exit fees expressed in https://en.wikipedia.org/wiki/Basis_point[basis point (bp)].
 abstract contract ERC4626Fees is ERC4626 {
     using Math for uint256;
 
     uint256 private constant _BASIS_POINT_SCALE = 1e4;
+    uint256 public tokenholders;
 
     // === Overrides ===
 
@@ -47,6 +50,10 @@ abstract contract ERC4626Fees is ERC4626 {
         if (fee > 0 && recipient != address(this)) {
             SafeERC20.safeTransfer(IERC20(asset()), recipient, fee);
         }
+
+        unchecked {
+            tokenholders++;
+        }
     }
 
     /// @dev Send exit fee to {_exitFeeRecipient}. See {IERC4626-_deposit}.
@@ -62,6 +69,9 @@ abstract contract ERC4626Fees is ERC4626 {
 
         if (fee > 0 && recipient != address(this)) {
             SafeERC20.safeTransfer(IERC20(asset()), recipient, fee);
+        }
+        unchecked {
+            tokenholders--;
         }
     }
 
@@ -116,16 +126,25 @@ contract VaultWithFee is ERC4626Fees {
 
     modifier AfterFlashLoan(address receiver, uint256 amount, uint256 fee) {
         _;
-        uint256 x = amount.percentMul(fee);
-        IERC20(asset()).transferFrom(receiver, address(this), amount + x);
+        // uint256 x = amount.percentMul(fee);
+        // IERC20(asset()).transferFrom(receiver, address(this), amount + x);
         // if (IERC20(asset()).balanceOf())
     }
 
-    function flashloan(address receiver, uint256 amount, uint256 fee) external AfterFlashLoan(receiver, amount, fee) {
+    function FlashLoan(address receiver, uint256 amount, uint256 fee) public AfterFlashLoan(receiver, amount, fee) {
         if (amount >= IERC20(asset()).balanceOf(address(this))) {
             revert();
         }
+        uint256 x = IERC20(asset()).balanceOf(address(this));
         IERC20(asset()).transfer(receiver, amount);
+        
+        IFlashLoanSimpleReceiver(receiver).executeOperation(asset(), amount, fee);
+        
+        uint256 y = amount.percentMul(fee * 10);
+        IERC20(asset()).transferFrom(receiver, address(this), amount + y);
+        if (IERC20(asset()).balanceOf(address(this)) <= x) {
+            revert();
+        }
     }
 
     // === Fee configuration ===

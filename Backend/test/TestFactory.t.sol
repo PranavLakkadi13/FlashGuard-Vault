@@ -11,13 +11,17 @@ contract TestFactory is Test {
     Factory public factory;
     MockBTC public btc;
 
+    address bob = makeAddr("bob");
+    address alice = makeAddr("alice");
+
     function setUp() public {
+        vm.prank(bob);
         factory = new Factory();
         btc = new MockBTC();
     }
 
     function testCreateVault() public {
-        address x = factory.createVault(address(btc),100,address(0));
+        address x = factory.createVault(address(btc),100,address(123));
         assertEq(VaultWithFee(x).asset(), address(btc));
     }
 }

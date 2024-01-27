@@ -1,1 +1,339 @@
-{"abi":[{"type":"function","name":"executeOperation","inputs":[{"name":"asset","type":"address","internalType":"address"},{"name":"amount","type":"uint256","internalType":"uint256"},{"name":"premium","type":"uint256","internalType":"uint256"}],"outputs":[{"name":"","type":"bool","internalType":"bool"}],"stateMutability":"nonpayable"}],"bytecode":{"object":"0x","sourceMap":"","linkReferences":{}},"deployedBytecode":{"object":"0x","sourceMap":"","linkReferences":{}},"methodIdentifiers":{"executeOperation(address,uint256,uint256)":"8b514f8c"},"rawMetadata":"{\"compiler\":{\"version\":\"0.8.21+commit.d9974bed\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"premium\",\"type\":\"uint256\"}],\"name\":\"executeOperation\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"executeOperation(address,uint256,uint256)\":{\"details\":\"Ensure that the contract can return the debt + premium, e.g., has      enough funds to repay and has approved the Pool to pull the total amount\",\"params\":{\"amount\":\"The amount of the flash-borrowed asset\",\"asset\":\"The address of the flash-borrowed asset\",\"premium\":\"The fee of the flash-borrowed asset\"},\"returns\":{\"_0\":\"True if the execution of the operation succeeds, false otherwise\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"executeOperation(address,uint256,uint256)\":{\"notice\":\"Executes an operation after receiving the flash-borrowed asset\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"src/IFlashLoanSimpleReceiver.sol\":\"IFlashLoanSimpleReceiver\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@aave/=node_modules/@aave/\",\":@ethereum-waffle/=node_modules/@ethereum-waffle/\",\":@openzeppelin/=node_modules/@openzeppelin/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":eth-gas-reporter/=node_modules/eth-gas-reporter/\",\":forge-std/=lib/forge-std/src/\",\":hardhat-deploy/=node_modules/hardhat-deploy/\",\":hardhat/=node_modules/hardhat/\"]},\"sources\":{\"src/IFlashLoanSimpleReceiver.sol\":{\"keccak256\":\"0x6c368fd290c4f170cf4974aca9966954ee54597d9d0499690a2d5d6e5d06327a\",\"license\":\"SEE LICENSE IN LICENSE\",\"urls\":[\"bzz-raw://5607ada5bdcb5a85e54f782c232ac598515ab7d30e3d1ba8dc6334b4ab3b574a\",\"dweb:/ipfs/QmXzdcJfHkQF8m1jhU5eDBrWGroeMUqQ2R9vvZAwE7eNAL\"]}},\"version\":1}","metadata":{"compiler":{"version":"0.8.21+commit.d9974bed"},"language":"Solidity","output":{"abi":[{"inputs":[{"internalType":"address","name":"asset","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"},{"internalType":"uint256","name":"premium","type":"uint256"}],"stateMutability":"nonpayable","type":"function","name":"executeOperation","outputs":[{"internalType":"bool","name":"","type":"bool"}]}],"devdoc":{"kind":"dev","methods":{"executeOperation(address,uint256,uint256)":{"details":"Ensure that the contract can return the debt + premium, e.g., has      enough funds to repay and has approved the Pool to pull the total amount","params":{"amount":"The amount of the flash-borrowed asset","asset":"The address of the flash-borrowed asset","premium":"The fee of the flash-borrowed asset"},"returns":{"_0":"True if the execution of the operation succeeds, false otherwise"}}},"version":1},"userdoc":{"kind":"user","methods":{"executeOperation(address,uint256,uint256)":{"notice":"Executes an operation after receiving the flash-borrowed asset"}},"version":1}},"settings":{"remappings":["@aave/=node_modules/@aave/","@ethereum-waffle/=node_modules/@ethereum-waffle/","@openzeppelin/=node_modules/@openzeppelin/","ds-test/=lib/forge-std/lib/ds-test/src/","eth-gas-reporter/=node_modules/eth-gas-reporter/","forge-std/=lib/forge-std/src/","hardhat-deploy/=node_modules/hardhat-deploy/","hardhat/=node_modules/hardhat/"],"optimizer":{"enabled":true,"runs":200},"metadata":{"bytecodeHash":"ipfs"},"compilationTarget":{"src/IFlashLoanSimpleReceiver.sol":"IFlashLoanSimpleReceiver"},"libraries":{}},"sources":{"src/IFlashLoanSimpleReceiver.sol":{"keccak256":"0x6c368fd290c4f170cf4974aca9966954ee54597d9d0499690a2d5d6e5d06327a","urls":["bzz-raw://5607ada5bdcb5a85e54f782c232ac598515ab7d30e3d1ba8dc6334b4ab3b574a","dweb:/ipfs/QmXzdcJfHkQF8m1jhU5eDBrWGroeMUqQ2R9vvZAwE7eNAL"],"license":"SEE LICENSE IN LICENSE"}},"version":1},"ast":{"absolutePath":"src/IFlashLoanSimpleReceiver.sol","id":48203,"exportedSymbols":{"IFlashLoanSimpleReceiver":[48202]},"nodeType":"SourceUnit","src":"52:912:32","nodes":[{"id":48189,"nodeType":"PragmaDirective","src":"52:24:32","nodes":[],"literals":["solidity","^","0.8",".18"]},{"id":48202,"nodeType":"ContractDefinition","src":"78:886:32","nodes":[{"id":48201,"nodeType":"FunctionDefinition","src":"634:181:32","nodes":[],"documentation":{"id":48190,"nodeType":"StructuredDocumentation","src":"119:510:32","text":" @notice Executes an operation after receiving the flash-borrowed asset\n @dev Ensure that the contract can return the debt + premium, e.g., has\n      enough funds to repay and has approved the Pool to pull the total amount\n @param asset The address of the flash-borrowed asset\n @param amount The amount of the flash-borrowed asset\n @param premium The fee of the flash-borrowed asset\n @return True if the execution of the operation succeeds, false otherwise"},"functionSelector":"8b514f8c","implemented":false,"kind":"function","modifiers":[],"name":"executeOperation","nameLocation":"643:16:32","parameters":{"id":48197,"nodeType":"ParameterList","parameters":[{"constant":false,"id":48192,"mutability":"mutable","name":"asset","nameLocation":"675:5:32","nodeType":"VariableDeclaration","scope":48201,"src":"667:13:32","stateVariable":false,"storageLocation":"default","typeDescriptions":{"typeIdentifier":"t_address","typeString":"address"},"typeName":{"id":48191,"name":"address","nodeType":"ElementaryTypeName","src":"667:7:32","stateMutability":"nonpayable","typeDescriptions":{"typeIdentifier":"t_address","typeString":"address"}},"visibility":"internal"},{"constant":false,"id":48194,"mutability":"mutable","name":"amount","nameLocation":"696:6:32","nodeType":"VariableDeclaration","scope":48201,"src":"688:14:32","stateVariable":false,"storageLocation":"default","typeDescriptions":{"typeIdentifier":"t_uint256","typeString":"uint256"},"typeName":{"id":48193,"name":"uint256","nodeType":"ElementaryTypeName","src":"688:7:32","typeDescriptions":{"typeIdentifier":"t_uint256","typeString":"uint256"}},"visibility":"internal"},{"constant":false,"id":48196,"mutability":"mutable","name":"premium","nameLocation":"718:7:32","nodeType":"VariableDeclaration","scope":48201,"src":"710:15:32","stateVariable":false,"storageLocation":"default","typeDescriptions":{"typeIdentifier":"t_uint256","typeString":"uint256"},"typeName":{"id":48195,"name":"uint256","nodeType":"ElementaryTypeName","src":"710:7:32","typeDescriptions":{"typeIdentifier":"t_uint256","typeString":"uint256"}},"visibility":"internal"}],"src":"659:131:32"},"returnParameters":{"id":48200,"nodeType":"ParameterList","parameters":[{"constant":false,"id":48199,"mutability":"mutable","name":"","nameLocation":"-1:-1:-1","nodeType":"VariableDeclaration","scope":48201,"src":"809:4:32","stateVariable":false,"storageLocation":"default","typeDescriptions":{"typeIdentifier":"t_bool","typeString":"bool"},"typeName":{"id":48198,"name":"bool","nodeType":"ElementaryTypeName","src":"809:4:32","typeDescriptions":{"typeIdentifier":"t_bool","typeString":"bool"}},"visibility":"internal"}],"src":"808:6:32"},"scope":48202,"stateMutability":"nonpayable","virtual":false,"visibility":"external"}],"abstract":false,"baseContracts":[],"canonicalName":"IFlashLoanSimpleReceiver","contractDependencies":[],"contractKind":"interface","fullyImplemented":false,"linearizedBaseContracts":[48202],"name":"IFlashLoanSimpleReceiver","nameLocation":"88:24:32","scope":48203,"usedErrors":[],"usedEvents":[]}],"license":"SEE LICENSE IN LICENSE"},"id":32}
+{
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "asset",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "premium",
+          "type": "uint256"
+        }
+      ],
+      "name": "executeOperation",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x",
+    "sourceMap": "",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "executeOperation(address,uint256,uint256)": "8b514f8c"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.23+commit.f704f362\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"asset\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"premium\",\"type\":\"uint256\"}],\"name\":\"executeOperation\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"executeOperation(address,uint256,uint256)\":{\"details\":\"Ensure that the contract can return the debt + premium, e.g., has      enough funds to repay and has approved the Pool to pull the total amount\",\"params\":{\"amount\":\"The amount of the flash-borrowed asset\",\"asset\":\"The address of the flash-borrowed asset\",\"premium\":\"The fee of the flash-borrowed asset\"},\"returns\":{\"_0\":\"True if the execution of the operation succeeds, false otherwise\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"executeOperation(address,uint256,uint256)\":{\"notice\":\"Executes an operation after receiving the flash-borrowed asset\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"src/IFlashLoanSimpleReceiver.sol\":\"IFlashLoanSimpleReceiver\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@aave/=node_modules/@aave/\",\":@ethereum-waffle/=node_modules/@ethereum-waffle/\",\":@openzeppelin/=node_modules/@openzeppelin/\",\":ds-test/=lib/forge-std/lib/ds-test/src/\",\":eth-gas-reporter/=node_modules/eth-gas-reporter/\",\":forge-std/=lib/forge-std/src/\",\":hardhat-deploy/=node_modules/hardhat-deploy/\",\":hardhat/=node_modules/hardhat/\"]},\"sources\":{\"src/IFlashLoanSimpleReceiver.sol\":{\"keccak256\":\"0x6c368fd290c4f170cf4974aca9966954ee54597d9d0499690a2d5d6e5d06327a\",\"license\":\"SEE LICENSE IN LICENSE\",\"urls\":[\"bzz-raw://5607ada5bdcb5a85e54f782c232ac598515ab7d30e3d1ba8dc6334b4ab3b574a\",\"dweb:/ipfs/QmXzdcJfHkQF8m1jhU5eDBrWGroeMUqQ2R9vvZAwE7eNAL\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.23+commit.f704f362"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "asset",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "premium",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "executeOperation",
+          "outputs": [
+            {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+            }
+          ]
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {
+          "executeOperation(address,uint256,uint256)": {
+            "details": "Ensure that the contract can return the debt + premium, e.g., has      enough funds to repay and has approved the Pool to pull the total amount",
+            "params": {
+              "amount": "The amount of the flash-borrowed asset",
+              "asset": "The address of the flash-borrowed asset",
+              "premium": "The fee of the flash-borrowed asset"
+            },
+            "returns": {
+              "_0": "True if the execution of the operation succeeds, false otherwise"
+            }
+          }
+        },
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {
+          "executeOperation(address,uint256,uint256)": {
+            "notice": "Executes an operation after receiving the flash-borrowed asset"
+          }
+        },
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        "@aave/=node_modules/@aave/",
+        "@ethereum-waffle/=node_modules/@ethereum-waffle/",
+        "@openzeppelin/=node_modules/@openzeppelin/",
+        "ds-test/=lib/forge-std/lib/ds-test/src/",
+        "eth-gas-reporter/=node_modules/eth-gas-reporter/",
+        "forge-std/=lib/forge-std/src/",
+        "hardhat-deploy/=node_modules/hardhat-deploy/",
+        "hardhat/=node_modules/hardhat/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "src/IFlashLoanSimpleReceiver.sol": "IFlashLoanSimpleReceiver"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "src/IFlashLoanSimpleReceiver.sol": {
+        "keccak256": "0x6c368fd290c4f170cf4974aca9966954ee54597d9d0499690a2d5d6e5d06327a",
+        "urls": [
+          "bzz-raw://5607ada5bdcb5a85e54f782c232ac598515ab7d30e3d1ba8dc6334b4ab3b574a",
+          "dweb:/ipfs/QmXzdcJfHkQF8m1jhU5eDBrWGroeMUqQ2R9vvZAwE7eNAL"
+        ],
+        "license": "SEE LICENSE IN LICENSE"
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "src/IFlashLoanSimpleReceiver.sol",
+    "id": 56444,
+    "exportedSymbols": {
+      "IFlashLoanSimpleReceiver": [
+        56443
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "52:912:35",
+    "nodes": [
+      {
+        "id": 56430,
+        "nodeType": "PragmaDirective",
+        "src": "52:24:35",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".18"
+        ]
+      },
+      {
+        "id": 56443,
+        "nodeType": "ContractDefinition",
+        "src": "78:886:35",
+        "nodes": [
+          {
+            "id": 56442,
+            "nodeType": "FunctionDefinition",
+            "src": "634:181:35",
+            "nodes": [],
+            "documentation": {
+              "id": 56431,
+              "nodeType": "StructuredDocumentation",
+              "src": "119:510:35",
+              "text": " @notice Executes an operation after receiving the flash-borrowed asset\n @dev Ensure that the contract can return the debt + premium, e.g., has\n      enough funds to repay and has approved the Pool to pull the total amount\n @param asset The address of the flash-borrowed asset\n @param amount The amount of the flash-borrowed asset\n @param premium The fee of the flash-borrowed asset\n @return True if the execution of the operation succeeds, false otherwise"
+            },
+            "functionSelector": "8b514f8c",
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "executeOperation",
+            "nameLocation": "643:16:35",
+            "parameters": {
+              "id": 56438,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 56433,
+                  "mutability": "mutable",
+                  "name": "asset",
+                  "nameLocation": "675:5:35",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 56442,
+                  "src": "667:13:35",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 56432,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "667:7:35",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 56435,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nameLocation": "696:6:35",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 56442,
+                  "src": "688:14:35",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 56434,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "688:7:35",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 56437,
+                  "mutability": "mutable",
+                  "name": "premium",
+                  "nameLocation": "718:7:35",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 56442,
+                  "src": "710:15:35",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 56436,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "710:7:35",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "659:131:35"
+            },
+            "returnParameters": {
+              "id": 56441,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 56440,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 56442,
+                  "src": "809:4:35",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 56439,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "809:4:35",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "808:6:35"
+            },
+            "scope": 56443,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IFlashLoanSimpleReceiver",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "linearizedBaseContracts": [
+          56443
+        ],
+        "name": "IFlashLoanSimpleReceiver",
+        "nameLocation": "88:24:35",
+        "scope": 56444,
+        "usedErrors": [],
+        "usedEvents": []
+      }
+    ],
+    "license": "SEE LICENSE IN LICENSE"
+  },
+  "id": 35
+}
