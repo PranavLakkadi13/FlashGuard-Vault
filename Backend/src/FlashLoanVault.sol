@@ -1,15 +1,15 @@
 // SPDX-License-Identifier: SEE LICENSE IN LICENSE
-pragma solidity ^0.8.19;
+pragma solidity ^0.8.0;
 
-import {FlashLoanSimpleReceiverBase} from "@aave/core-v3/contracts/flashloan/base/FlashLoanReceiverBase.sol";
-import {IPoolAddressProvider} from "@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol";
+import {FlashLoanSimpleReceiverBase} from "@aave/core-v3/contracts/flashloan/base/FlashLoanSimpleReceiverBase.sol";
+import {IPoolAddressesProvider} from "@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol";
 import {IERC20} from "@aave/core-v3/contracts/dependencies/openzeppelin/contracts/IERC20.sol";
 
 contract FlashLoanVault is FlashLoanSimpleReceiverBase {
     address payable owner;
 
-    constructor(address _addressProvider) FlashLoanSimpleReceiverBase(IPoolAddressProvider(_addressProvider)) {
-        owner = msg.sender;
+    constructor(address _addressProvider) FlashLoanSimpleReceiverBase(IPoolAddressesProvider(_addressProvider)) {
+        owner =payable( msg.sender);
     }
 
     function executeOperation(address asset, uint256 amount, uint256 premium, address initiator, bytes calldata params)
@@ -39,7 +39,7 @@ contract FlashLoanVault is FlashLoanSimpleReceiverBase {
 
     function withdraw(address _tokenAddress) external onlyOwner {
         IERC20 token = IERC20(_tokenAddress);
-        token.transfer(msg.sender),token.balanceOf(address(this));
+        token.transfer(msg.sender,token.balanceOf(address(this)));
     }
 
     modifier onlyOwner() {
@@ -47,5 +47,5 @@ contract FlashLoanVault is FlashLoanSimpleReceiverBase {
         _;
     }
 
-    receiver() external payable{};
+    receive() external payable{}
 }
