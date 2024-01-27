@@ -127,8 +127,6 @@ contract VaultWithFee is ERC4626Fees {
         return entryFeeBasisPoints; // replace with e.g. 100 for 1%
     }
 
-    function requestFlashLoan() external {
-        
-    }
+    
 
 }

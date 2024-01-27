@@ -45,4 +45,8 @@ contract Factory {
 
         return abi.encodePacked(bytecode, abi.encode(asset, _foo));
     }
+
+    function requestFlashLoan(address asset, uint256 amount) public {
+        
+    }
 }
