@@ -28,15 +28,15 @@ contract Factory {
         bytes memory endOutput = abi.encodePacked(bytecode,abi.encode(asset,basisPoint,treasury));
         
         bytes32 salt = keccak256(abi.encodePacked(asset));
+        
         assembly {
             vault := create2(0,add(endOutput,32),mload(endOutput),salt)
         }
 
-        assert(VaultWithFee(vault).asset() == asset);
+        // assert(VaultWithFee(vault).asset() == asset);
 
         allVaults.push(vault);
         tokenToVault[asset] = vault;
-
 
     }
 

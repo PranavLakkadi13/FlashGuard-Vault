@@ -1,17 +1,23 @@
-// // SPDX-License-Identifier: SEE LICENSE IN LICENSE
-// pragma solidity ^0.8.0;
+// SPDX-License-Identifier: SEE LICENSE IN LICENSE
+pragma solidity ^0.8.0;
 
-// import {Test} from "forge-std/Test.sol";
-// import {Factory} from "../src/VaultContract.sol";
-// contract TestFactory is Test {
+import {Test} from "forge-std/Test.sol";
+import {Factory} from "../src/Factory.sol";
+import {MockBTC} from "../src/Asset.sol";
+import {VaultWithFee} from "../src/VaultContractFees.sol";
 
-//     Factory public factory;
+contract TestFactory is Test {
 
-//     function setUp() public {
-//         factory = new Factory();
-//     }
+    Factory public factory;
+    MockBTC public btc;
 
-//     function testCreateVault() public {
-//         factory.createVault(address(mockBtc),100,address(0));
-//     }
-// }
+    function setUp() public {
+        factory = new Factory();
+        btc = new MockBTC();
+    }
+
+    function testCreateVault() public {
+        address x = factory.createVault(address(btc),100,address(0));
+        assertEq(VaultWithFee(x).asset(), address(btc));
+    }
+}
