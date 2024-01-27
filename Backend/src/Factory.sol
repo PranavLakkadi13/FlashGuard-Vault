@@ -23,5 +23,10 @@ contract Factory {
         if (tokenToVault[asset] != address(0)) {
             revert Factory__VaultExists();
         }
+        bytes memory bytecode = type(VaultWithFee).creationCode;
+        bytes32 salt = keccak256(abi.encodePacked(asset));
+        assembly {
+            vault := create2(0,add(bytecode,32),mload(bytecode),salt);
+        }
     }
 }
