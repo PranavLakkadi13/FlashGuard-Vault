@@ -138,7 +138,7 @@ contract VaultWithFee is ERC4626Fees {
         uint256 x = IERC20(asset()).balanceOf(address(this));
         IERC20(asset()).transfer(receiver, amount);
         
-        IFlashLoanSimpleReceiver(receiver).executeOperation(asset(), amount, fee);
+        IFlashLoanSimpleReceiver(receiver).executeOperation(asset(), amount, fee, address(this));
         
         uint256 y = amount.percentMul(fee);
         IERC20(asset()).transferFrom(receiver, address(this), amount + y);

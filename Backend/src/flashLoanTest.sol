@@ -4,8 +4,11 @@ pragma solidity ^0.8.0;
 import "./IFlashLoanSimpleReceiver.sol";
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {Factory} from "./Factory.sol";
+import "./Percentage.sol";
 
 contract FlashLoanTest is IFlashLoanSimpleReceiver {
+    using PercentageMath for uint256;
+
     address payable owner;
     // IERC20 token;
     Factory factory;
@@ -16,15 +19,16 @@ contract FlashLoanTest is IFlashLoanSimpleReceiver {
         // token = IERC20(token);
     }
 
-    function executeOperation(address asset, uint256 amount, uint256 premium)
+    function executeOperation(address asset, uint256 amount, uint256 premium, address pool)
         external
         virtual
         override
         returns (bool)
     {
         //Here we already have the borrowed funds and the user needs to write the logic
-        uint256 amountOwed = amount + premium;
-        IERC20(asset).approve(address(owner), amountOwed);
+        
+        uint256 amountOwed = amount + amount.percentMul(premium);
+        IERC20(asset).approve(pool, amountOwed);
         return true;
     }
 

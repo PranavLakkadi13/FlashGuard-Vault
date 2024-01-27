@@ -2,6 +2,7 @@
 pragma solidity ^0.8.19;
 
 import {Test} from "forge-std/Test.sol";
+import {console} from "forge-std/console.sol";
 import {Factory} from "../src/Factory.sol";
 import {MockBTC} from "../src/Asset.sol";
 import {VaultWithFee} from "../src/VaultContractFees.sol";
@@ -45,14 +46,16 @@ contract TestVault is Test {
         VaultWithFee(x).deposit(100e18, bob);
         vm.stopPrank();
 
-        btc.balanceOf(x);
+        uint256 bal = btc.balanceOf(x);
+        console.log(bal);
         btc.balanceOf(address(treasury));
 
-        VaultWithFee(x).balanceOf(bob);
-
+        uint256 tes = VaultWithFee(x).balanceOf(bob);
+        console.log(tes);
         loanvault.requestFlashLoan(address(btc),98e18);
 
-        
+        uint256 bal2 = btc.balanceOf(x);
+        console.log(bal2);
         // factory.requestFlashLoan(address(btc),90e18,address(loanvault));
     }
 }
