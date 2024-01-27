@@ -67,17 +67,17 @@
   },
   "ast": {
     "absolutePath": "src/Percentage.sol",
-    "id": 56478,
+    "id": 56480,
     "exportedSymbols": {
       "PercentageMath": [
-        56477
+        56479
       ]
     },
     "nodeType": "SourceUnit",
     "src": "37:2364:36",
     "nodes": [
       {
-        "id": 56445,
+        "id": 56447,
         "nodeType": "PragmaDirective",
         "src": "37:23:36",
         "nodes": [],
@@ -89,12 +89,12 @@
         ]
       },
       {
-        "id": 56477,
+        "id": 56479,
         "nodeType": "ContractDefinition",
         "src": "410:1990:36",
         "nodes": [
           {
-            "id": 56449,
+            "id": 56451,
             "nodeType": "VariableDeclaration",
             "src": "482:49:36",
             "nodes": [],
@@ -102,7 +102,7 @@
             "mutability": "constant",
             "name": "PERCENTAGE_FACTOR",
             "nameLocation": "508:17:36",
-            "scope": 56477,
+            "scope": 56479,
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -110,7 +110,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 56447,
+              "id": 56449,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
               "src": "482:7:36",
@@ -121,7 +121,7 @@
             },
             "value": {
               "hexValue": "316534",
-              "id": 56448,
+              "id": 56450,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -138,7 +138,7 @@
             "visibility": "internal"
           },
           {
-            "id": 56452,
+            "id": 56454,
             "nodeType": "VariableDeclaration",
             "src": "577:56:36",
             "nodes": [],
@@ -146,7 +146,7 @@
             "mutability": "constant",
             "name": "HALF_PERCENTAGE_FACTOR",
             "nameLocation": "603:22:36",
-            "scope": 56477,
+            "scope": 56479,
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -154,7 +154,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 56450,
+              "id": 56452,
               "name": "uint256",
               "nodeType": "ElementaryTypeName",
               "src": "577:7:36",
@@ -165,7 +165,7 @@
             },
             "value": {
               "hexValue": "302e356534",
-              "id": 56451,
+              "id": 56453,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -182,12 +182,12 @@
             "visibility": "internal"
           },
           {
-            "id": 56464,
+            "id": 56466,
             "nodeType": "FunctionDefinition",
             "src": "1029:490:36",
             "nodes": [],
             "body": {
-              "id": 56463,
+              "id": 56465,
               "nodeType": "Block",
               "src": "1123:396:36",
               "nodes": [],
@@ -461,77 +461,77 @@
                   "evmVersion": "paris",
                   "externalReferences": [
                     {
-                      "declaration": 56452,
+                      "declaration": 56454,
                       "isOffset": false,
                       "isSlot": false,
                       "src": "1319:22:36",
                       "valueSize": 1
                     },
                     {
-                      "declaration": 56452,
+                      "declaration": 56454,
                       "isOffset": false,
                       "isSlot": false,
                       "src": "1460:22:36",
                       "valueSize": 1
                     },
                     {
-                      "declaration": 56449,
+                      "declaration": 56451,
                       "isOffset": false,
                       "isSlot": false,
                       "src": "1485:17:36",
                       "valueSize": 1
                     },
                     {
-                      "declaration": 56457,
+                      "declaration": 56459,
                       "isOffset": false,
                       "isSlot": false,
                       "src": "1273:10:36",
                       "valueSize": 1
                     },
                     {
-                      "declaration": 56457,
+                      "declaration": 56459,
                       "isOffset": false,
                       "isSlot": false,
                       "src": "1344:10:36",
                       "valueSize": 1
                     },
                     {
-                      "declaration": 56457,
+                      "declaration": 56459,
                       "isOffset": false,
                       "isSlot": false,
                       "src": "1447:10:36",
                       "valueSize": 1
                     },
                     {
-                      "declaration": 56460,
+                      "declaration": 56462,
                       "isOffset": false,
                       "isSlot": false,
                       "src": "1418:6:36",
                       "valueSize": 1
                     },
                     {
-                      "declaration": 56455,
+                      "declaration": 56457,
                       "isOffset": false,
                       "isSlot": false,
                       "src": "1296:5:36",
                       "valueSize": 1
                     },
                     {
-                      "declaration": 56455,
+                      "declaration": 56457,
                       "isOffset": false,
                       "isSlot": false,
                       "src": "1440:5:36",
                       "valueSize": 1
                     }
                   ],
-                  "id": 56462,
+                  "id": 56464,
                   "nodeType": "InlineAssembly",
                   "src": "1230:283:36"
                 }
               ]
             },
             "documentation": {
-              "id": 56453,
+              "id": 56455,
               "nodeType": "StructuredDocumentation",
               "src": "640:384:36",
               "text": " @notice Executes a percentage multiplication\n @dev assembly optimized for improved gas savings, see https://twitter.com/transmissions11/status/1451131036377571328\n @param value The value of which the percentage needs to be calculated\n @param percentage The percentage of the value to be calculated\n @return result value percentmul percentage"
@@ -542,17 +542,17 @@
             "name": "percentMul",
             "nameLocation": "1038:10:36",
             "parameters": {
-              "id": 56458,
+              "id": 56460,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 56455,
+                  "id": 56457,
                   "mutability": "mutable",
                   "name": "value",
                   "nameLocation": "1057:5:36",
                   "nodeType": "VariableDeclaration",
-                  "scope": 56464,
+                  "scope": 56466,
                   "src": "1049:13:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -561,7 +561,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 56454,
+                    "id": 56456,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1049:7:36",
@@ -574,12 +574,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 56457,
+                  "id": 56459,
                   "mutability": "mutable",
                   "name": "percentage",
                   "nameLocation": "1072:10:36",
                   "nodeType": "VariableDeclaration",
-                  "scope": 56464,
+                  "scope": 56466,
                   "src": "1064:18:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -588,7 +588,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 56456,
+                    "id": 56458,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1064:7:36",
@@ -603,17 +603,17 @@
               "src": "1048:35:36"
             },
             "returnParameters": {
-              "id": 56461,
+              "id": 56463,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 56460,
+                  "id": 56462,
                   "mutability": "mutable",
                   "name": "result",
                   "nameLocation": "1115:6:36",
                   "nodeType": "VariableDeclaration",
-                  "scope": 56464,
+                  "scope": 56466,
                   "src": "1107:14:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -622,7 +622,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 56459,
+                    "id": 56461,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1107:7:36",
@@ -636,18 +636,18 @@
               ],
               "src": "1106:16:36"
             },
-            "scope": 56477,
+            "scope": 56479,
             "stateMutability": "pure",
             "virtual": false,
             "visibility": "internal"
           },
           {
-            "id": 56476,
+            "id": 56478,
             "nodeType": "FunctionDefinition",
             "src": "1908:490:36",
             "nodes": [],
             "body": {
-              "id": 56475,
+              "id": 56477,
               "nodeType": "Block",
               "src": "2002:396:36",
               "nodes": [],
@@ -963,77 +963,77 @@
                   "evmVersion": "paris",
                   "externalReferences": [
                     {
-                      "declaration": 56449,
+                      "declaration": 56451,
                       "isOffset": false,
                       "isSlot": false,
                       "src": "2235:17:36",
                       "valueSize": 1
                     },
                     {
-                      "declaration": 56449,
+                      "declaration": 56451,
                       "isOffset": false,
                       "isSlot": false,
                       "src": "2330:17:36",
                       "valueSize": 1
                     },
                     {
-                      "declaration": 56469,
+                      "declaration": 56471,
                       "isOffset": false,
                       "isSlot": false,
                       "src": "2161:10:36",
                       "valueSize": 1
                     },
                     {
-                      "declaration": 56469,
+                      "declaration": 56471,
                       "isOffset": false,
                       "isSlot": false,
                       "src": "2218:10:36",
                       "valueSize": 1
                     },
                     {
-                      "declaration": 56469,
+                      "declaration": 56471,
                       "isOffset": false,
                       "isSlot": false,
                       "src": "2354:10:36",
                       "valueSize": 1
                     },
                     {
-                      "declaration": 56469,
+                      "declaration": 56471,
                       "isOffset": false,
                       "isSlot": false,
                       "src": "2371:10:36",
                       "valueSize": 1
                     },
                     {
-                      "declaration": 56472,
+                      "declaration": 56474,
                       "isOffset": false,
                       "isSlot": false,
                       "src": "2301:6:36",
                       "valueSize": 1
                     },
                     {
-                      "declaration": 56467,
+                      "declaration": 56469,
                       "isOffset": false,
                       "isSlot": false,
                       "src": "2191:5:36",
                       "valueSize": 1
                     },
                     {
-                      "declaration": 56467,
+                      "declaration": 56469,
                       "isOffset": false,
                       "isSlot": false,
                       "src": "2323:5:36",
                       "valueSize": 1
                     }
                   ],
-                  "id": 56474,
+                  "id": 56476,
                   "nodeType": "InlineAssembly",
                   "src": "2108:284:36"
                 }
               ]
             },
             "documentation": {
-              "id": 56465,
+              "id": 56467,
               "nodeType": "StructuredDocumentation",
               "src": "1525:378:36",
               "text": " @notice Executes a percentage division\n @dev assembly optimized for improved gas savings, see https://twitter.com/transmissions11/status/1451131036377571328\n @param value The value of which the percentage needs to be calculated\n @param percentage The percentage of the value to be calculated\n @return result value percentdiv percentage"
@@ -1044,17 +1044,17 @@
             "name": "percentDiv",
             "nameLocation": "1917:10:36",
             "parameters": {
-              "id": 56470,
+              "id": 56472,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 56467,
+                  "id": 56469,
                   "mutability": "mutable",
                   "name": "value",
                   "nameLocation": "1936:5:36",
                   "nodeType": "VariableDeclaration",
-                  "scope": 56476,
+                  "scope": 56478,
                   "src": "1928:13:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1063,7 +1063,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 56466,
+                    "id": 56468,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1928:7:36",
@@ -1076,12 +1076,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 56469,
+                  "id": 56471,
                   "mutability": "mutable",
                   "name": "percentage",
                   "nameLocation": "1951:10:36",
                   "nodeType": "VariableDeclaration",
-                  "scope": 56476,
+                  "scope": 56478,
                   "src": "1943:18:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1090,7 +1090,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 56468,
+                    "id": 56470,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1943:7:36",
@@ -1105,17 +1105,17 @@
               "src": "1927:35:36"
             },
             "returnParameters": {
-              "id": 56473,
+              "id": 56475,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 56472,
+                  "id": 56474,
                   "mutability": "mutable",
                   "name": "result",
                   "nameLocation": "1994:6:36",
                   "nodeType": "VariableDeclaration",
-                  "scope": 56476,
+                  "scope": 56478,
                   "src": "1986:14:36",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1124,7 +1124,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 56471,
+                    "id": 56473,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "1986:7:36",
@@ -1138,7 +1138,7 @@
               ],
               "src": "1985:16:36"
             },
-            "scope": 56477,
+            "scope": 56479,
             "stateMutability": "pure",
             "virtual": false,
             "visibility": "internal"
@@ -1150,18 +1150,18 @@
         "contractDependencies": [],
         "contractKind": "library",
         "documentation": {
-          "id": 56446,
+          "id": 56448,
           "nodeType": "StructuredDocumentation",
           "src": "62:347:36",
           "text": " @title PercentageMath library\n @author Aave\n @notice Provides functions to perform percentage calculations\n @dev Percentages are defined by default with 2 decimals of precision (100.00). The precision is indicated by PERCENTAGE_FACTOR\n @dev Operations are rounded. If a value is >=.5, will be rounded up, otherwise rounded down."
         },
         "fullyImplemented": true,
         "linearizedBaseContracts": [
-          56477
+          56479
         ],
         "name": "PercentageMath",
         "nameLocation": "418:14:36",
-        "scope": 56478,
+        "scope": 56480,
         "usedErrors": [],
         "usedEvents": []
       }
