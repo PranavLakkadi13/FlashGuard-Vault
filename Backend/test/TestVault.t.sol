@@ -64,9 +64,6 @@ contract TestVault is Test {
         vm.prank(bob);
         VaultWithFee(x).withdraw(tes, alice, bob);
         console.log(string(abi.encodePacked("Leverage Gained by user :-        ")), btc.balanceOf(alice));
-        // console.log(btc.balanceOf(alice));
-
-        // factory.requestFlashLoan(address(btc),90e18,address(loanvault));
 
     }
 
