@@ -62,14 +62,15 @@ contract TestVault is Test {
         console.log(string(abi.encodePacked("Fee Collected from Flash loan :-  ")), feeCollected);
 
         vm.prank(bob);
-        VaultWithFee(x).withdraw(tes, bob, bob);
-        console.log(btc.balanceOf(bob));
+        VaultWithFee(x).withdraw(tes, alice, bob);
+        console.log(string(abi.encodePacked("Leverage Gained by user :-        ")), btc.balanceOf(alice));
+        // console.log(btc.balanceOf(alice));
 
         // factory.requestFlashLoan(address(btc),90e18,address(loanvault));
 
     }
 
     function testComplete() external{
-        
+
     }
 }
