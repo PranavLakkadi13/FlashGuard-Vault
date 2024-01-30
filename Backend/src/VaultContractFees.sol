@@ -135,7 +135,7 @@ contract VaultWithFee is ERC4626Fees {
     }
 
     function FlashLoan(address receiver, uint256 amount, uint256 fee) public AfterFlashLoan(receiver, amount, fee) {
-        if (amount >= IERC20(asset()).balanceOf(address(this))) {
+        if (amount > IERC20(asset()).balanceOf(address(this))) {
             revert();
         }
         uint256 x = IERC20(asset()).balanceOf(address(this));
